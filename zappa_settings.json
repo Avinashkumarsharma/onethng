@@ -4,6 +4,6 @@
         "profile_name": "zappa",
         "project_name": "onethng",
         "runtime": "python3.8",
-        "s3_bucket": "zappa-xj20xcq6q"
+        "s3_bucket": "onethng-assets"
     }
 }
