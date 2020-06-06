@@ -1,9 +1,0 @@
-{
-    "dev": {
-        "app_function": "onethng.app",
-        "profile_name": "zappa",
-        "project_name": "onethng",
-        "runtime": "python3.8",
-        "s3_bucket": "onethng-assets"
-    }
-}
