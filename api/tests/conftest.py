@@ -12,6 +12,6 @@ def client(app: Flask):
     """A test client for the app."""
     return app.test_client()
 @pytest.fixture
-def runner(app):
+def runner(app: Flask):
     """A test runner for the app's Click commands."""
     return app.test_cli_runner()
