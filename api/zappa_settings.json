@@ -1,9 +1,10 @@
 {
     "dev": {
-        "app_function": "api.__init__.app",
+        "app_function": "run.app",
         "profile_name": "zappa",
-        "project_name": "app",
+        "project_name": "api",
         "runtime": "python3.6",
-        "s3_bucket": "onethng-assets-api"
+        "s3_bucket": "onethng-api-asset",
+        "keep_warm":false
     }
 }
