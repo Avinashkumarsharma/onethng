@@ -12,13 +12,14 @@ class Config:
     AWS_KEY_ID = environ.get('AWS_KEY_ID')
     @staticmethod
     def get_config():
-        return environ.get('APP_ENV')
+        _config = environ.get('APP_ENV')
+        if not _config:
+            raise ValueError("NO APP_ENV environment Configured")
+        return _config
 
 class ProdConfig(Config):
-    FLASK_ENV = 'production'
     DEBUG = False
     TESTING = False
 class DevConfig(Config):
-    FLASK_ENV = 'development'
-    DEBUG = False
+    DEBUG = True
     TESTING = True
