@@ -25,6 +25,7 @@
         "context_header_mappings": {
             "sub": "authorizer.claims.sub",
             "user_id": "authorizer.claims.cognito:username"
-        }
+        },
+        "lambda_handler": "app.handler.lambda_handler"
     }
 }
