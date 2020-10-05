@@ -26,3 +26,4 @@ class ProdConfig(Config):
 class DevConfig(Config):
     DEBUG = True
     TESTING = True
+    DATABASE = "http://localhost:8000"
