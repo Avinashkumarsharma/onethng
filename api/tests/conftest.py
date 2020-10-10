@@ -1,17 +1,18 @@
 import pytest
 from app import create_app
 from flask import Flask
-@pytest.fixture
+@pytest.fixture(scope="module")
 def app():
     """Create and configure a new app instance for each test."""
     app = create_app()
     yield app
 
-@pytest.fixture
+@pytest.fixture(scope="module", autouse=True)
 def client(app: Flask):
     """A test client for the app."""
-    return app.test_client()
-@pytest.fixture
+    with app.test_client() as tclient:
+        return tclient
+@pytest.fixture(scope="module")
 def runner(app: Flask):
     """A test runner for the app's Click commands."""
     return app.test_cli_runner()

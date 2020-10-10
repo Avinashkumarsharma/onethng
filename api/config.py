@@ -23,7 +23,9 @@ class Config:
 class ProdConfig(Config):
     DEBUG = False
     TESTING = False
+    DYNNAMODB_TABLE = "onething-prod"
 class DevConfig(Config):
     DEBUG = True
     TESTING = True
     DATABASE = "http://localhost:8000"
+    DYNAMODB_TABLE = "onething-dev"
