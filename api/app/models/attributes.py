@@ -60,7 +60,18 @@ class UnicodeDelimitedTupleAttribute(Attribute[T]):
         field_types = getattr(self.tuple_type, '_field_types', None)
         if fields and field_types:
             values = value.split(self.delimiter, maxsplit=len(fields))
-            return self.tuple_type(**{f: field_types[f](v) for f, v in zip(fields, values)})
+            params = {}
+            for f,v in zip(fields, values):
+                _type = field_types[f]
+                subtypes = getattr(_type, '__args__', None)
+                if subtypes:
+                    for _t in subtypes:
+                        if (isinstance(v, _t)):
+                            params[f] = _t(v)
+                            break
+                else:
+                    params[f] = _type(v)
+            return self.tuple_type(**params)
         else:
             return self.tuple_type(value.split(self.delimiter))
     

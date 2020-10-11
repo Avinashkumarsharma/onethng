@@ -28,7 +28,5 @@ class Mymodel(Model):
 def test_unicode_delimited_tuple_serialize():
     model = Mymodel()
     model.SK = MyMeta(prefix = 'Meta', value = '1234')
-    model.PK = MyTuple(name = 'User', userid = '1234')
-    print (model.SK)
-    with pytest.raises(ValueError):
-        model.save()
+    model.PK = MyTuple(name = 'User#', userid = '1234')
+    model.save()

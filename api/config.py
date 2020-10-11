@@ -29,3 +29,5 @@ class DevConfig(Config):
     TESTING = True
     DATABASE = "http://localhost:8000"
     DYNAMODB_TABLE = "onething-dev"
+class DevPyTest(DevConfig):
+    DYNAMODB_TABLE = "onething-pytest"
