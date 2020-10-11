@@ -66,9 +66,11 @@ class UnicodeDelimitedTupleAttribute(Attribute[T]):
                 subtypes = getattr(_type, '__args__', None)
                 if subtypes:
                     for _t in subtypes:
-                        if (isinstance(v, _t)):
+                        try:
                             params[f] = _t(v)
                             break
+                        except ValueError:
+                            continue
                 else:
                     params[f] = _type(v)
             return self.tuple_type(**params)
