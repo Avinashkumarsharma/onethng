@@ -12,6 +12,13 @@ class UserMetaKey(NamedTuple):
 
 class UserModel(Model):
     PK = UnicodeDelimitedTupleAttribute(UserKeyPK, hash_key=True)
+    @property
+    def userid(self) ->Optional[str]:
+        return self.PK.uuid
+    
+    @userid.setter
+    def userid(self, value: str) -> None:
+        self.PK = UserKeyPK(uuid = value)
 
 class UserMeta(UserModel):
     Meta = model_base_meta()
@@ -24,6 +31,15 @@ class UserMeta(UserModel):
     first_name = UnicodeAttribute()
     last_name = UnicodeAttribute()
 
+    @property
+    def userid(self) ->Optional[str]:
+        return self.PK.uuid
+
+    @userid.setter
+    def userid(self, value: str) -> None:
+        self.PK = UserKeyPK(uuid = value)
+        self.SK = UserMetaKey(userid = value)
+        
 class UserTaskSK(NamedTuple):
     prefix: Optional[str] = "Task"
     uid: Optional[str] = None

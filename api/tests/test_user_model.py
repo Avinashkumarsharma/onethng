@@ -18,6 +18,14 @@ def test_user_task_put(client):
     taskid = UserTaskSK(uid = _id, timestamp = 1234567890)
     task = UserTask(UserKeyPK(uuid = _id), taskid, body = body)
     task.save()
+def test_userid_setter(client):
+    from app.models.user import UserMeta
+    meta = UserMeta()
+    meta.userid = '123455'
+    meta.first_name = 'Foo'
+    meta.last_name = 'Bar'
+    meta.save()
+
 def test_user_task_get(client):
     _id = '123456'
     from app.models.user import UserTask, UserKeyPK, UserTaskSK
